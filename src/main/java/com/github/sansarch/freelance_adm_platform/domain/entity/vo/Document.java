@@ -11,7 +11,6 @@ public final class Document {
         if (value == null || value.isEmpty()) {
             throw new InvalidDocumentException("Document value cannot be null or empty");
         }
-
         this.value = sanitize(value);
         this.type = type;
         if (!isValid(this.value, type)) {

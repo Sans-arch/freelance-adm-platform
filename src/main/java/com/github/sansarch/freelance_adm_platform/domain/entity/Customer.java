@@ -1,6 +1,7 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.CustomerId;
+import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidCustomerException;
 
 public final class Customer {
@@ -8,20 +9,23 @@ public final class Customer {
     private String name;
     private String email;
     private String phone;
+    private Document document;
 
-    public Customer(String name, String email, String phone) {
+    public Customer(String name, String email, String phone, Document document) {
         this.id = CustomerId.generate();
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.document = document;
         this.validate();
     }
 
-    public Customer(CustomerId id, String name, String email, String phone) {
+    public Customer(CustomerId id, String name, String email, String phone, Document document) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.document = document;
         this.validate();
     }
 
@@ -34,6 +38,9 @@ public final class Customer {
         }
         if (phone == null || phone.isEmpty()) {
             throw new InvalidCustomerException("Phone cannot be null or empty");
+        }
+        if (document == null) {
+            throw new InvalidCustomerException("Document cannot be null");
         }
     }
 
@@ -51,5 +58,9 @@ public final class Customer {
 
     public String getPhone() {
         return phone;
+    }
+
+    public Document getDocument() {
+        return document;
     }
 }
