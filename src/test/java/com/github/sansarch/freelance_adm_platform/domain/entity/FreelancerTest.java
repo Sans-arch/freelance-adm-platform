@@ -1,6 +1,8 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
+import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.FreelancerId;
+import com.github.sansarch.freelance_adm_platform.domain.enums.DocumentType;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidFreelancerException;
 import org.junit.jupiter.api.Test;
 
@@ -9,19 +11,22 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FreelancerTest {
+    private final String VALID_CPF = "12345678901";
 
     @Test
     void shouldCreateNewFreelancer() {
         String name = "John Doe";
         String email = "john@doe.com";
         String phone = "+1234567890";
+        Document document = new Document(VALID_CPF, DocumentType.CPF);
 
-        var freelancer = new Freelancer(name, email, phone);
+        var freelancer = new Freelancer(name, email, phone, document);
 
         assertNotNull(freelancer.getId());
         assertEquals(name, freelancer.getName());
         assertEquals(email, freelancer.getEmail());
         assertEquals(phone, freelancer.getPhone());
+        assertNotNull(freelancer.getDocument());
     }
 
     @Test
@@ -31,31 +36,45 @@ class FreelancerTest {
         String name = "Jane Doe";
         String email = "john@doe.com";
         String phone = "+1234567890";
+        Document document = new Document(VALID_CPF, DocumentType.CPF);
 
-        var freelancer = new Freelancer(id, name, email, phone);
+        var freelancer = new Freelancer(id, name, email, phone, document);
 
         assertEquals(id, freelancer.getId());
         assertEquals(id.getValue(), freelancer.getId().getValue());
         assertEquals(name, freelancer.getName());
         assertEquals(email, freelancer.getEmail());
         assertEquals(phone, freelancer.getPhone());
+        assertNotNull(freelancer.getDocument());
     }
 
     @Test
     void shouldThrowExceptionWhenNameIsNullOrEmpty() {
-        assertThrows(InvalidFreelancerException.class, () -> new Freelancer("", "john@doe.com", "+1234567890"));
-        assertThrows(InvalidFreelancerException.class, () -> new Freelancer(null, "john@doe.com", "+1234567890"));
+        assertThrows(InvalidFreelancerException.class, () ->
+                new Freelancer("", "john@doe.com", "+1234567890", null));
+        assertThrows(InvalidFreelancerException.class, () ->
+                new Freelancer(null, "john@doe.com", "+1234567890", null));
     }
 
     @Test
     void shouldThrowExceptionWhenEmailIsNullOrEmpty() {
-        assertThrows(InvalidFreelancerException.class, () -> new Freelancer("John Doe", "", "+1234567890"));
-        assertThrows(InvalidFreelancerException.class, () -> new Freelancer("John Doe", null, "+1234567890"));
+        assertThrows(InvalidFreelancerException.class, () ->
+                new Freelancer("John Doe", "", "+1234567890", null));
+        assertThrows(InvalidFreelancerException.class, () ->
+                new Freelancer("John Doe", null, "+1234567890", null));
     }
 
     @Test
     void shouldThrowExceptionWhenPhoneIsNullOrEmpty() {
-        assertThrows(InvalidFreelancerException.class, () -> new Freelancer("John Doe", "john@doe.com", ""));
-        assertThrows(InvalidFreelancerException.class, () -> new Freelancer("John Doe", "john@doe.com", null));
+        assertThrows(InvalidFreelancerException.class, () ->
+                new Freelancer("John Doe", "john@doe.com", "", null));
+        assertThrows(InvalidFreelancerException.class, () ->
+                new Freelancer("John Doe", "john@doe.com", null, null));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenDocumentIsNull() {
+        assertThrows(InvalidFreelancerException.class, () ->
+                new Freelancer("John Doe", "john@doe.com", "+1234567890", null));
     }
 }

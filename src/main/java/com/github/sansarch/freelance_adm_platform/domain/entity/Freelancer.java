@@ -1,5 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
+import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.FreelancerId;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidFreelancerException;
 
@@ -8,20 +9,23 @@ public final class Freelancer {
     private String name;
     private String email;
     private String phone;
+    private Document document;
 
-    public Freelancer(String name, String email, String phone) {
+    public Freelancer(String name, String email, String phone, Document document) {
         this.id = FreelancerId.generate();
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.document = document;
         this.validate();
     }
 
-    public Freelancer(FreelancerId id, String name, String email, String phone) {
+    public Freelancer(FreelancerId id, String name, String email, String phone, Document document) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.document = document;
         this.validate();
     }
 
@@ -34,6 +38,9 @@ public final class Freelancer {
         }
         if (phone == null || phone.isEmpty()) {
             throw new InvalidFreelancerException("Phone cannot be null or empty");
+        }
+        if (document == null) {
+            throw new InvalidFreelancerException("Document cannot be null");
         }
     }
 
@@ -51,5 +58,9 @@ public final class Freelancer {
 
     public String getPhone() {
         return phone;
+    }
+
+    public Document getDocument() {
+        return document;
     }
 }
