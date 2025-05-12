@@ -4,7 +4,7 @@ import com.github.sansarch.freelance_adm_platform.domain.entity.vo.CustomerId;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidCustomerException;
 
 public final class Customer {
-    private CustomerId id;
+    private final CustomerId id;
     private String name;
     private String email;
     private String phone;
