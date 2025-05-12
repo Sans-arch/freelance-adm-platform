@@ -10,7 +10,7 @@ public final class Customer {
     private String phone;
 
     public Customer(String name, String email, String phone) {
-        this.id = new CustomerId();
+        this.id = CustomerId.generate();
         this.name = name;
         this.email = email;
         this.phone = phone;

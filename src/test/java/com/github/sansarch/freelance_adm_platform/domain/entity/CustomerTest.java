@@ -26,7 +26,7 @@ class CustomerTest {
     @Test
     void shouldCreateExistingCustomer() {
         UUID id = UUID.randomUUID();
-        CustomerId existingId = new CustomerId(id);
+        CustomerId existingId = CustomerId.from(id);
         String name = "John Doe";
         String email = "john@john.com";
         String phone = "1234567890";
@@ -45,5 +45,38 @@ class CustomerTest {
        assertThrows(InvalidCustomerException.class, () -> {
            new Customer(null, null, null);
        });
+    }
+
+    @Test
+    void shouldThrowExceptionWhenEmailIsNullOrEmpty() {
+        assertThrows(InvalidCustomerException.class, () -> {
+            new Customer("John Doe", null, "1234567890");
+        });
+
+        assertThrows(InvalidCustomerException.class, () -> {
+            new Customer("John Doe", "", "1234567890");
+        });
+    }
+
+    @Test
+    void shouldThrowExceptionWhenNameIsNullOrEmpty() {
+        assertThrows(InvalidCustomerException.class, () -> {
+            new Customer(null, null, "1234567890");
+        });
+
+        assertThrows(InvalidCustomerException.class, () -> {
+            new Customer("", null, "1234567890");
+        });
+    }
+
+    @Test
+    void shouldThrowExceptionWhenPhoneIsNullOrEmpty() {
+        assertThrows(InvalidCustomerException.class, () -> {
+            new Customer("John Doe", "joh@doe.com", null);
+        });
+
+        assertThrows(InvalidCustomerException.class, () -> {
+            new Customer("John Doe", "john@doe.com", "");
+        });
     }
 }

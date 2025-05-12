@@ -5,12 +5,16 @@ import java.util.UUID;
 public final class CustomerId {
     private final UUID id;
 
-    public CustomerId() {
-        this.id = UUID.randomUUID();
+    private CustomerId(UUID value) {
+        this.id = value;
     }
 
-    public CustomerId(UUID id) {
-        this.id = id;
+    public static CustomerId from(UUID id) {
+        return new CustomerId(id);
+    }
+
+    public static CustomerId generate() {
+        return new CustomerId(UUID.randomUUID());
     }
 
     public UUID getValue() {
