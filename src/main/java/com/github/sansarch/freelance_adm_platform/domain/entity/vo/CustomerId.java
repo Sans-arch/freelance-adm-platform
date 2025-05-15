@@ -5,8 +5,8 @@ import java.util.UUID;
 public final class CustomerId {
     private final UUID id;
 
-    private CustomerId(UUID value) {
-        this.id = value;
+    private CustomerId(UUID id) {
+        this.id = id;
     }
 
     public static CustomerId from(UUID id) {

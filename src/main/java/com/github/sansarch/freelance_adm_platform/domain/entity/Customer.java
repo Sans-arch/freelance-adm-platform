@@ -1,10 +1,11 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
+import com.github.sansarch.freelance_adm_platform.domain.AggregateRoot;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.CustomerId;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidCustomerException;
 
-public final class Customer {
+public final class Customer implements AggregateRoot {
     private final CustomerId id;
     private String name;
     private String email;
@@ -17,7 +18,7 @@ public final class Customer {
         this.email = email;
         this.phone = phone;
         this.document = document;
-        this.validate();
+        validate();
     }
 
     public Customer(CustomerId id, String name, String email, String phone, Document document) {
@@ -26,7 +27,7 @@ public final class Customer {
         this.email = email;
         this.phone = phone;
         this.document = document;
-        this.validate();
+        validate();
     }
 
     private void validate() {
