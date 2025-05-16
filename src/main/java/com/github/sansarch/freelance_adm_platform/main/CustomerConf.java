@@ -2,6 +2,7 @@ package com.github.sansarch.freelance_adm_platform.main;
 
 import com.github.sansarch.freelance_adm_platform.application.gateway.CustomerGateway;
 import com.github.sansarch.freelance_adm_platform.application.usecase.customer.CreateCustomerUseCase;
+import com.github.sansarch.freelance_adm_platform.infrastructure.gateway.CustomerGatewayImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,8 +11,7 @@ public class CustomerConf {
 
     @Bean
     public CustomerGateway customerGateway() {
-        // return new CustomerGatewayImpl();
-        return null;
+        return new CustomerGatewayImpl();
     }
 
     @Bean

@@ -2,6 +2,7 @@ package com.github.sansarch.freelance_adm_platform.main;
 
 import com.github.sansarch.freelance_adm_platform.application.gateway.UserGateway;
 import com.github.sansarch.freelance_adm_platform.application.usecase.user.CreateUserUseCase;
+import com.github.sansarch.freelance_adm_platform.infrastructure.gateway.UserGatewayImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,8 +11,7 @@ public class UserConf {
 
     @Bean
     public UserGateway userGateway() {
-        // return new UserGatewayImpl();
-        return null;
+        return new UserGatewayImpl();
     }
 
     @Bean
