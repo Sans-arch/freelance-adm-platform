@@ -12,6 +12,7 @@ public class CreateFreelancerUseCase {
     }
 
     public Freelancer execute(CreateFreelancerDto dto) {
-        return null;
+        var freelancer = new Freelancer(dto.name(), dto.email(), dto.phone(), dto.document());
+        return freelancerGateway.save(freelancer);
     }
 }

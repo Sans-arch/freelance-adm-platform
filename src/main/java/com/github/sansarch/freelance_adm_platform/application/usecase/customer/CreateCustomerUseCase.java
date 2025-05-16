@@ -12,7 +12,7 @@ public class CreateCustomerUseCase {
     }
 
     public Customer execute(CreateCustomerDto dto) {
-        // Customer customer = new Customer(name, email, phone, document);
-        return customerGateway.save(null);
+        var customer = new Customer(dto.name(), dto.email(), dto.phone(), dto.document());
+        return customerGateway.save(customer);
     }
 }

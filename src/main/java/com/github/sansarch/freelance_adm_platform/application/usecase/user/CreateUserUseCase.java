@@ -12,6 +12,14 @@ public class CreateUserUseCase {
     }
 
     public User execute(CreateUserDto dto) {
-        return null;
+        var user = new User(
+                dto.name(),
+                dto.email(),
+                dto.phone(),
+                dto.document(),
+                dto.accounts(),
+                dto.mainAccount()
+        );
+        return userGateway.save(user);
     }
 }
