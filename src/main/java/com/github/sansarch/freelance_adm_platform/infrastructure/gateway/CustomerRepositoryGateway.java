@@ -3,11 +3,17 @@ package com.github.sansarch.freelance_adm_platform.infrastructure.gateway;
 import com.github.sansarch.freelance_adm_platform.application.gateway.CustomerGateway;
 import com.github.sansarch.freelance_adm_platform.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.UserId;
+import com.github.sansarch.freelance_adm_platform.infrastructure.persistence.CustomerRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerGatewayImpl implements CustomerGateway {
+public class CustomerRepositoryGateway implements CustomerGateway {
+    private final CustomerRepository customerRepository;
+
+    public CustomerRepositoryGateway(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Override
     public Customer save(Customer customer) {
