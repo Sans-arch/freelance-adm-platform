@@ -2,8 +2,9 @@ package com.github.sansarch.freelance_adm_platform.main;
 
 import com.github.sansarch.freelance_adm_platform.application.gateway.CustomerGateway;
 import com.github.sansarch.freelance_adm_platform.application.usecase.customer.CreateCustomerUseCase;
-import com.github.sansarch.freelance_adm_platform.infrastructure.gateway.CustomerRepositoryGateway;
-import com.github.sansarch.freelance_adm_platform.infrastructure.persistence.CustomerRepository;
+import com.github.sansarch.freelance_adm_platform.application.usecase.customer.CreateCustomerUseCaseImpl;
+import com.github.sansarch.freelance_adm_platform.infrastructure.repository.CustomerRepositoryGateway;
+import com.github.sansarch.freelance_adm_platform.infrastructure.persistence.CustomerJpaRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,12 +12,12 @@ import org.springframework.context.annotation.Configuration;
 public class CustomerConf {
 
     @Bean
-    public CustomerGateway customerGateway(CustomerRepository customerRepository) {
-        return new CustomerRepositoryGateway(customerRepository);
+    public CustomerGateway customerGateway(CustomerJpaRepository customerJpaRepository) {
+        return new CustomerRepositoryGateway(customerJpaRepository);
     }
 
     @Bean
     public CreateCustomerUseCase createCustomerUseCase(CustomerGateway customerGateway) {
-        return new CreateCustomerUseCase(customerGateway);
+        return new CreateCustomerUseCaseImpl(customerGateway);
     }
 }

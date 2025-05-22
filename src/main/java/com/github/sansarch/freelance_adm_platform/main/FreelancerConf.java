@@ -1,9 +1,9 @@
 package com.github.sansarch.freelance_adm_platform.main;
 
 import com.github.sansarch.freelance_adm_platform.application.gateway.FreelancerGateway;
-import com.github.sansarch.freelance_adm_platform.application.usecase.freelancer.CreateFreelancerUseCase;
-import com.github.sansarch.freelance_adm_platform.infrastructure.gateway.FreelancerRepositoryGateway;
-import com.github.sansarch.freelance_adm_platform.infrastructure.persistence.FreelancerRepository;
+import com.github.sansarch.freelance_adm_platform.application.usecase.freelancer.CreateFreelancerUseCaseImpl;
+import com.github.sansarch.freelance_adm_platform.infrastructure.repository.FreelancerRepositoryGateway;
+import com.github.sansarch.freelance_adm_platform.infrastructure.persistence.FreelancerJpaRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,12 +11,12 @@ import org.springframework.context.annotation.Configuration;
 public class FreelancerConf {
 
     @Bean
-    public FreelancerGateway freelancerGateway(FreelancerRepository freelancerRepository) {
-        return new FreelancerRepositoryGateway(freelancerRepository);
+    public FreelancerGateway freelancerGateway(FreelancerJpaRepository freelancerJpaRepository) {
+        return new FreelancerRepositoryGateway(freelancerJpaRepository);
     }
 
     @Bean
-    public CreateFreelancerUseCase createFreelancerUseCase(FreelancerGateway freelancerGateway) {
-        return new CreateFreelancerUseCase(freelancerGateway);
+    public CreateFreelancerUseCaseImpl createFreelancerUseCase(FreelancerGateway freelancerGateway) {
+        return new CreateFreelancerUseCaseImpl(freelancerGateway);
     }
 }

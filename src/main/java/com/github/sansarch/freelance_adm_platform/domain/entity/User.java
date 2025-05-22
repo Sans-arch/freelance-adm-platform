@@ -17,18 +17,6 @@ public final class User implements AggregateRoot {
     private List<AccountType> accounts;
     private AccountType mainAccount;
 
-    public User(String name, String email, String phone, Document document,
-                List<AccountType> accounts, AccountType mainAccount) {
-        this.id = UserId.generate();
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.document = document;
-        this.accounts = accounts;
-        this.mainAccount = mainAccount;
-        validate();
-    }
-
     public User(UserId id, String name, String email, String phone, Document document,
                 List<AccountType> accounts, AccountType mainAccount) {
         this.id = id;
@@ -38,7 +26,7 @@ public final class User implements AggregateRoot {
         this.document = document;
         this.accounts = accounts;
         this.mainAccount = mainAccount;
-        validate();
+        this.validate();
     }
 
     private void validate() {

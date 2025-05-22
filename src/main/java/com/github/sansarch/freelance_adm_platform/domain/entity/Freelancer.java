@@ -12,22 +12,13 @@ public final class Freelancer implements AggregateRoot {
     private String phone;
     private Document document;
 
-    public Freelancer(String name, String email, String phone, Document document) {
-        this.id = FreelancerId.generate();
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.document = document;
-        validate();
-    }
-
     public Freelancer(FreelancerId id, String name, String email, String phone, Document document) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.document = document;
-        validate();
+        this.validate();
     }
 
     private void validate() {

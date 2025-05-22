@@ -2,8 +2,9 @@ package com.github.sansarch.freelance_adm_platform.main;
 
 import com.github.sansarch.freelance_adm_platform.application.gateway.UserGateway;
 import com.github.sansarch.freelance_adm_platform.application.usecase.user.CreateUserUseCase;
-import com.github.sansarch.freelance_adm_platform.infrastructure.gateway.UserRepositoryGateway;
-import com.github.sansarch.freelance_adm_platform.infrastructure.persistence.UserRepository;
+import com.github.sansarch.freelance_adm_platform.application.usecase.user.CreateUserUseCaseImpl;
+import com.github.sansarch.freelance_adm_platform.infrastructure.repository.UserRepositoryGateway;
+import com.github.sansarch.freelance_adm_platform.infrastructure.persistence.UserJpaRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,12 +12,12 @@ import org.springframework.context.annotation.Configuration;
 public class UserConf {
 
     @Bean
-    public UserGateway userGateway(UserRepository userRepository) {
-        return new UserRepositoryGateway(userRepository);
+    public UserGateway userGateway(UserJpaRepository userJpaRepository) {
+        return new UserRepositoryGateway(userJpaRepository);
     }
 
     @Bean
     public CreateUserUseCase createUserUseCase(UserGateway userGateway) {
-        return new CreateUserUseCase(userGateway);
+        return new CreateUserUseCaseImpl(userGateway);
     }
 }

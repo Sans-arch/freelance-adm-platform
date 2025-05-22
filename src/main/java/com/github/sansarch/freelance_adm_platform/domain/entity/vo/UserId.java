@@ -9,12 +9,12 @@ public final class UserId {
         this.id = value;
     }
 
-    public static UserId from(UUID id) {
-        return new UserId(id);
-    }
-
     public static UserId generate() {
         return new UserId(UUID.randomUUID());
+    }
+
+    public static UserId from(UUID value) {
+        return new UserId(value);
     }
 
     public UUID getValue() {

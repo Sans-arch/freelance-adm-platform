@@ -5,10 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
@@ -29,4 +31,7 @@ public class UserModel {
 
     @Column
     private String document;
+
+    @Column
+    private String documentType;
 }

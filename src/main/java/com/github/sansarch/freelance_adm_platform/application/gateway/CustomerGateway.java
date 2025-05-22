@@ -9,8 +9,4 @@ import java.util.Optional;
 public interface CustomerGateway {
 
     Customer save(Customer customer);
-    Optional<Customer> findById(UserId id);
-    void delete(UserId id);
-    List<Customer> findAll();
-    void update(Customer customer);
 }
