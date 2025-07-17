@@ -1,11 +1,10 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.CustomerId;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.FreelancerId;
-import com.github.sansarch.freelance_adm_platform.domain.enums.DocumentType;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
+import com.github.sansarch.freelance_adm_platform.domain.shared.enums.DocumentType;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidCustomerException;
-import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidFreelancerException;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Email;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -18,7 +17,7 @@ class CustomerTest {
     @Test
     void shouldCreateCustomer() {
         String name = "John Doe";
-        String email = "john@doe.com";
+        Email email = new Email("john@doe.com");
         String phone = "+1234567890";
         Document document = new Document("12345678901", DocumentType.CPF);
 
@@ -37,7 +36,7 @@ class CustomerTest {
     void shouldCreateExistingCustomerWithId() {
         var id = CustomerId.from(UUID.randomUUID());
         String name = "Jane Doe";
-        String email = "john@doe.com";
+        Email email = new Email("john@doe.com");
         String phone = "+1234567890";
         Document document = new Document("12345678901", DocumentType.CPF);
 
@@ -52,24 +51,31 @@ class CustomerTest {
 
     @Test
     void shouldThrowExceptionWhenNameIsNullOrEmpty() {
-        assertThrows(InvalidCustomerException.class, () -> new Customer("", "john@doe.com", "+1234567890", null));
-        assertThrows(InvalidCustomerException.class, () -> new Customer(null, "john@doe.com", "+1234567890", null));
+        assertThrows(InvalidCustomerException.class, () -> new Customer("", new Email("john@doe.com"),
+                "+1234567890", null));
+        assertThrows(InvalidCustomerException.class, () -> new Customer(null, new Email("john@doe.com"),
+                "+1234567890", null));
     }
 
     @Test
     void shouldThrowExceptionWhenEmailIsNullOrEmpty() {
-        assertThrows(InvalidCustomerException.class, () -> new Customer("John Doe", "", "+1234567890", null));
-        assertThrows(InvalidCustomerException.class, () -> new Customer("John Doe", null, "+1234567890", null));
+        assertThrows(InvalidCustomerException.class, () -> new Customer("John Doe", null,
+                "+1234567890", null));
+        assertThrows(InvalidCustomerException.class, () -> new Customer("John Doe", null,
+                "+1234567890", null));
     }
 
     @Test
     void shouldThrowExceptionWhenPhoneIsNullOrEmpty() {
-        assertThrows(InvalidCustomerException.class, () -> new Customer("John Doe", "john@doe.com", "", null));
-        assertThrows(InvalidCustomerException.class, () -> new Customer("John Doe", "john@doe.com", null, null));
+        assertThrows(InvalidCustomerException.class, () ->
+                new Customer("John Doe", new Email("john@doe.com"), "", null));
+        assertThrows(InvalidCustomerException.class, () ->
+                new Customer("John Doe", new Email("john@doe.com"), null, null));
     }
 
     @Test
     void shouldThrowExceptionWhenDocumentIsNull() {
-        assertThrows(InvalidCustomerException.class, () -> new Customer("John Doe", "john@doe.com", "+1234567890", null));
+        assertThrows(InvalidCustomerException.class, () ->
+                new Customer("John Doe", new Email("john@doe.com"), "+1234567890", null));
     }
 }

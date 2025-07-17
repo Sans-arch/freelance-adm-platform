@@ -1,18 +1,18 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.domain.AggregateRoot;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.CustomerId;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidCustomerException;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Email;
 
 public final class Customer implements AggregateRoot {
     private final CustomerId id;
     private String name;
-    private String email;
+    private Email email;
     private String phone;
     private Document document;
 
-    public Customer(String name, String email, String phone, Document document) {
+    public Customer(String name, Email email, String phone, Document document) {
         this.id = CustomerId.generate();
         this.name = name;
         this.email = email;
@@ -21,7 +21,7 @@ public final class Customer implements AggregateRoot {
         validate();
     }
 
-    public Customer(CustomerId id, String name, String email, String phone, Document document) {
+    public Customer(CustomerId id, String name, Email email, String phone, Document document) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -34,7 +34,7 @@ public final class Customer implements AggregateRoot {
         if (name == null || name.isEmpty()) {
             throw new InvalidCustomerException("Name cannot be null or empty");
         }
-        if (email == null || email.isEmpty()) {
+        if (email == null) {
             throw new InvalidCustomerException("Email cannot be null or empty");
         }
         if (phone == null || phone.isEmpty()) {
@@ -53,7 +53,7 @@ public final class Customer implements AggregateRoot {
         return name;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 

@@ -10,6 +10,7 @@ public record CreateUserRequestDto(
         @NotBlank String name,
         @Email String email,
         @NotBlank String phone,
+        @NotBlank String password,
         @NotEmpty CreateUserRequestDocumentDto document,
         @NotEmpty List<CreateUserRequestAccountType> accounts,
         @NotBlank CreateUserRequestAccountType mainAccount

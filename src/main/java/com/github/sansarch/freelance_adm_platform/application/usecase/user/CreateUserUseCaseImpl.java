@@ -16,6 +16,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 dto.name(),
                 dto.email(),
                 dto.phone(),
+                dto.password(),
                 dto.document(),
                 dto.accounts(),
                 dto.mainAccount()

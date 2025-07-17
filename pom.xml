@@ -13,10 +13,14 @@
 	<groupId>com.github.sansarch</groupId>
 	<artifactId>freelance-adm-platform</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
 	<name>freelance-adm-platform</name>
 
 	<properties>
 		<java.version>21</java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
 
 	<dependencies>

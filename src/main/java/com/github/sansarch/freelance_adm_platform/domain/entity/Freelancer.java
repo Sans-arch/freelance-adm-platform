@@ -1,7 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.domain.AggregateRoot;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.FreelancerId;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidFreelancerException;
 

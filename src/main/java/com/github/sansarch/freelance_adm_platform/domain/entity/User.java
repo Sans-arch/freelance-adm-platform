@@ -1,28 +1,43 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.domain.AggregateRoot;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.UserId;
-import com.github.sansarch.freelance_adm_platform.domain.enums.AccountType;
+import com.github.sansarch.freelance_adm_platform.domain.shared.enums.AccountType;
 import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidUserDataException;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Email;
 
 import java.util.List;
 
 public final class User implements AggregateRoot {
     private final UserId id;
     private String name;
-    private String email;
+    private Email email;
     private String phone;
+    private String password;
     private Document document;
     private List<AccountType> accounts;
     private AccountType mainAccount;
 
-    public User(UserId id, String name, String email, String phone, Document document,
+    public User(UserId id, String name, Email email, String phone, String password, Document document,
                 List<AccountType> accounts, AccountType mainAccount) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.password = password;
+        this.document = document;
+        this.accounts = accounts;
+        this.mainAccount = mainAccount;
+        this.validate();
+    }
+
+    public User(String name, Email email, String phone, String password, Document document, List<AccountType> accounts,
+                AccountType mainAccount) {
+        this.id = UserId.generate();
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
         this.document = document;
         this.accounts = accounts;
         this.mainAccount = mainAccount;
@@ -33,7 +48,7 @@ public final class User implements AggregateRoot {
         if (name == null || name.isEmpty()) {
             throw new InvalidUserDataException("Name cannot be null or empty");
         }
-        if (email == null || email.isEmpty()) {
+        if (email == null) {
             throw new InvalidUserDataException("Email cannot be null or empty");
         }
         if (phone == null || phone.isEmpty()) {
@@ -52,12 +67,16 @@ public final class User implements AggregateRoot {
         return name;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public Document getDocument() {

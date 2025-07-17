@@ -1,7 +1,7 @@
 package com.github.sansarch.freelance_adm_platform.application.usecase.freelancer;
 
 import com.github.sansarch.freelance_adm_platform.domain.entity.Freelancer;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
 import com.github.sansarch.freelance_adm_platform.domain.entity.vo.FreelancerId;
 
 public class FreelancerFactory {

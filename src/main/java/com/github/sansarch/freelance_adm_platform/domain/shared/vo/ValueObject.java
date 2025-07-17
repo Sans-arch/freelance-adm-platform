@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.domain.sharedkernel.vo;
+package com.github.sansarch.freelance_adm_platform.domain.shared.vo;
 
 public interface ValueObject {
     // Marker interface for value objects in the domain model.

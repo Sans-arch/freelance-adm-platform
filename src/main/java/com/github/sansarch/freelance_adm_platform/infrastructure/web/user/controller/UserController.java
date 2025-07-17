@@ -22,6 +22,6 @@ public class UserController {
         var useCaseDto = userDtoMapper.toInternalCreateUserUseCaseDto(createUserRequestDto);
         var createdCustomer = createUserUseCase.execute(useCaseDto);
 
-        return new CreateUserResponseDto(createdCustomer.getName(), createdCustomer.getEmail());
+        return new CreateUserResponseDto(createdCustomer.getName(), createdCustomer.getEmail().getValue());
     }
 }

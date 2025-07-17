@@ -2,9 +2,9 @@ package com.github.sansarch.freelance_adm_platform.infrastructure.web.user.dto.c
 
 import com.github.sansarch.freelance_adm_platform.application.usecase.user.dto.CreateUserDto;
 
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.Document;
-import com.github.sansarch.freelance_adm_platform.domain.enums.AccountType;
-import com.github.sansarch.freelance_adm_platform.domain.enums.DocumentType;
+import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
+import com.github.sansarch.freelance_adm_platform.domain.shared.enums.AccountType;
+import com.github.sansarch.freelance_adm_platform.domain.shared.enums.DocumentType;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,6 +27,7 @@ public class UserDtoMapper {
                 createUserRequestDto.name(),
                 createUserRequestDto.email(),
                 createUserRequestDto.phone(),
+                createUserRequestDto.password(),
                 document,
                 accounts,
                 mainAccount

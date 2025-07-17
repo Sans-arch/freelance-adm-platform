@@ -30,6 +30,9 @@ public class UserModel {
     private String phone;
 
     @Column
+    private String password;
+
+    @Column
     private String document;
 
     @Column
