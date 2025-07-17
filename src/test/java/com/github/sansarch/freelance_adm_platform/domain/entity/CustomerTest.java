@@ -1,10 +1,11 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.CustomerId;
-import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
-import com.github.sansarch.freelance_adm_platform.domain.shared.enums.DocumentType;
-import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidCustomerException;
-import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Email;
+import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
+import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
+import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
+import com.github.sansarch.freelance_adm_platform.customer.domain.exception.InvalidCustomerException;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

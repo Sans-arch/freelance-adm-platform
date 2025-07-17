@@ -1,12 +1,13 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.application.usecase.user.UserFactory;
-import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.UserId;
-import com.github.sansarch.freelance_adm_platform.domain.shared.enums.AccountType;
-import com.github.sansarch.freelance_adm_platform.domain.shared.enums.DocumentType;
-import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidUserDataException;
-import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Email;
+import com.github.sansarch.freelance_adm_platform.user.application.usecase.UserFactory;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
+import com.github.sansarch.freelance_adm_platform.user.domain.entity.UserId;
+import com.github.sansarch.freelance_adm_platform.shared.domain.enums.AccountType;
+import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
+import com.github.sansarch.freelance_adm_platform.user.exception.InvalidUserDataException;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
+import com.github.sansarch.freelance_adm_platform.user.domain.entity.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

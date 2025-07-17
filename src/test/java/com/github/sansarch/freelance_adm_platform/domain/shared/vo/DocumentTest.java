@@ -1,7 +1,8 @@
 package com.github.sansarch.freelance_adm_platform.domain.shared.vo;
 
-import com.github.sansarch.freelance_adm_platform.domain.shared.enums.DocumentType;
-import com.github.sansarch.freelance_adm_platform.domain.shared.exception.InvalidDocumentException;
+import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
+import com.github.sansarch.freelance_adm_platform.shared.domain.exception.InvalidDocumentException;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

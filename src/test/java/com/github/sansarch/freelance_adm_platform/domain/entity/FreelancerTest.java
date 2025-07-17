@@ -1,10 +1,11 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.application.usecase.freelancer.FreelancerFactory;
-import com.github.sansarch.freelance_adm_platform.domain.shared.vo.Document;
-import com.github.sansarch.freelance_adm_platform.domain.entity.vo.FreelancerId;
-import com.github.sansarch.freelance_adm_platform.domain.shared.enums.DocumentType;
-import com.github.sansarch.freelance_adm_platform.domain.exception.InvalidFreelancerException;
+import com.github.sansarch.freelance_adm_platform.freelancer.application.usecase.FreelancerFactory;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
+import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.FreelancerId;
+import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
+import com.github.sansarch.freelance_adm_platform.freelancer.domain.exception.InvalidFreelancerException;
+import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.Freelancer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
