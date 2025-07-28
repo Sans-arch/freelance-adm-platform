@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.user.exception;
+package com.github.sansarch.freelance_adm_platform.user.domain.exception;
 
 public class InvalidUserDataException extends RuntimeException {
     public InvalidUserDataException(String message) {
