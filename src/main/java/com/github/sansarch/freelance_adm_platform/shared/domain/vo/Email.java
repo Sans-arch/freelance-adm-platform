@@ -2,7 +2,7 @@ package com.github.sansarch.freelance_adm_platform.shared.domain.vo;
 
 import java.util.regex.Pattern;
 
-public class Email implements ValueObject {
+public final class Email implements ValueObject {
 
     private static final Pattern REGEX = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
     private final String value;
