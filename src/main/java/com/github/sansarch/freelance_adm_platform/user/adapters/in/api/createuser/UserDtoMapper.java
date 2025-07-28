@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.user.adapters.api.createuser;
+package com.github.sansarch.freelance_adm_platform.user.adapters.in.api.createuser;
 
 import com.github.sansarch.freelance_adm_platform.user.application.usecase.dto.CreateUserDto;
 

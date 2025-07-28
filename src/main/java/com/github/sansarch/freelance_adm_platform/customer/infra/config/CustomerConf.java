@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.customer.config;
+package com.github.sansarch.freelance_adm_platform.customer.infra.config;
 
 import com.github.sansarch.freelance_adm_platform.customer.application.gateway.CustomerGateway;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase;

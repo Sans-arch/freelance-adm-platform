@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.freelancer.config;
+package com.github.sansarch.freelance_adm_platform.freelancer.infra.config;
 
 import com.github.sansarch.freelance_adm_platform.freelancer.application.gateway.FreelancerGateway;
 import com.github.sansarch.freelance_adm_platform.freelancer.application.usecase.CreateFreelancerUseCaseImpl;
