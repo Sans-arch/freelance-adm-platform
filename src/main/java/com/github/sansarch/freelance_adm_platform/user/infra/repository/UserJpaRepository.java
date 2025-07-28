@@ -1,6 +1,6 @@
-package com.github.sansarch.freelance_adm_platform.user.infra.persistence;
+package com.github.sansarch.freelance_adm_platform.user.infra.repository;
 
-import com.github.sansarch.freelance_adm_platform.user.infra.persistence.model.UserModel;
+import com.github.sansarch.freelance_adm_platform.user.infra.repository.model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

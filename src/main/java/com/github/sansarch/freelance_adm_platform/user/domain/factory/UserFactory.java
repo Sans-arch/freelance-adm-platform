@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.user.application.usecase;
+package com.github.sansarch.freelance_adm_platform.user.domain.factory;
 
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.User;
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.UserId;

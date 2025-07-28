@@ -1,8 +1,9 @@
 package com.github.sansarch.freelance_adm_platform.user.application.usecase;
 
-import com.github.sansarch.freelance_adm_platform.user.application.usecase.dto.CreateUserDto;
-import com.github.sansarch.freelance_adm_platform.user.domain.entity.User;
+import com.github.sansarch.freelance_adm_platform.shared.application.usecase.UseCase;
+import com.github.sansarch.freelance_adm_platform.user.application.usecase.command.CreateUserCommand;
+import com.github.sansarch.freelance_adm_platform.user.application.usecase.response.UserCreatedResponse;
 
-public interface CreateUserUseCase {
-    User execute(CreateUserDto dto);
+public interface CreateUserUseCase extends UseCase<CreateUserCommand, UserCreatedResponse> {
+    UserCreatedResponse execute(CreateUserCommand command);
 }

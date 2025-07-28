@@ -1,9 +1,9 @@
-package com.github.sansarch.freelance_adm_platform.user.api.controller;
+package com.github.sansarch.freelance_adm_platform.user.adapters.api.controller;
 
 import com.github.sansarch.freelance_adm_platform.user.application.usecase.CreateUserUseCase;
-import com.github.sansarch.freelance_adm_platform.user.api.createuser.CreateUserRequestDto;
-import com.github.sansarch.freelance_adm_platform.user.api.createuser.CreateUserResponseDto;
-import com.github.sansarch.freelance_adm_platform.user.api.createuser.UserDtoMapper;
+import com.github.sansarch.freelance_adm_platform.user.adapters.api.createuser.CreateUserRequestDto;
+import com.github.sansarch.freelance_adm_platform.user.adapters.api.createuser.CreateUserResponseDto;
+import com.github.sansarch.freelance_adm_platform.user.adapters.api.createuser.UserDtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,18 +1,21 @@
 package com.github.sansarch.freelance_adm_platform.user.application.usecase;
 
 import com.github.sansarch.freelance_adm_platform.user.application.gateway.UserGateway;
-import com.github.sansarch.freelance_adm_platform.user.application.usecase.dto.CreateUserDto;
+import com.github.sansarch.freelance_adm_platform.user.application.usecase.command.CreateUserCommand;
+import com.github.sansarch.freelance_adm_platform.user.application.usecase.response.UserCreatedResponse;
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.User;
+import com.github.sansarch.freelance_adm_platform.user.domain.factory.UserFactory;
 
-public class CreateUserUseCaseImpl implements CreateUserUseCase {
+public final class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final UserGateway userGateway;
 
     public CreateUserUseCaseImpl(UserGateway userGateway) {
         this.userGateway = userGateway;
     }
 
-    public User execute(CreateUserDto dto) {
-        var user = UserFactory.createUser(
+    @Override
+    public UserCreatedResponse execute(CreateUserCommand dto) {
+        User user = UserFactory.createUser(
                 dto.name(),
                 dto.email(),
                 dto.phone(),
@@ -22,6 +25,17 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 dto.mainAccount()
         );
 
-        return userGateway.save(user);
+        userGateway.save(user);
+
+        return new UserCreatedResponse(
+                user.getId().getValue(),
+                user.getName(),
+                user.getEmail().getValue(),
+                user.getPhone(),
+                user.getPassword(),
+                user.getDocument(),
+                user.getAccounts(),
+                user.getMainAccount()
+        );
     }
 }

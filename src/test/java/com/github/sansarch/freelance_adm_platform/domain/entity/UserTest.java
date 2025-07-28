@@ -1,6 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.user.application.usecase.UserFactory;
+import com.github.sansarch.freelance_adm_platform.user.domain.factory.UserFactory;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.UserId;
 import com.github.sansarch.freelance_adm_platform.shared.domain.enums.AccountType;

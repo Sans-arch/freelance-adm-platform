@@ -1,12 +1,12 @@
-package com.github.sansarch.freelance_adm_platform.user.infra.persistence;
+package com.github.sansarch.freelance_adm_platform.user.infra.repository;
 
-import com.github.sansarch.freelance_adm_platform.user.application.usecase.UserFactory;
+import com.github.sansarch.freelance_adm_platform.user.domain.factory.UserFactory;
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.User;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.UserId;
 import com.github.sansarch.freelance_adm_platform.shared.domain.enums.AccountType;
 import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
-import com.github.sansarch.freelance_adm_platform.user.infra.persistence.model.UserModel;
+import com.github.sansarch.freelance_adm_platform.user.infra.repository.model.UserModel;
 
 public class UserMapper {
 
