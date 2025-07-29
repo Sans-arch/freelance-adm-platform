@@ -17,6 +17,8 @@ public class UserBuilder {
     private Document document;
     private Set<AccountType> accounts;
 
+    public UserBuilder() {}
+
     public UserBuilder id(UserId id) {
         this.id = id;
         return this;

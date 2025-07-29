@@ -42,6 +42,9 @@ public final class User implements AggregateRoot {
     }
 
     private void validate() {
+        if (id == null) {
+            throw new InvalidUserDataException("Id cannot be null");
+        }
         if (name == null || name.isEmpty()) {
             throw new InvalidUserDataException("Name cannot be null or empty");
         }

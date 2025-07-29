@@ -38,36 +38,35 @@ class UserTest {
         assertNotNull(user.getDocument());
     }
 
+   @Test
+   void shouldThrowExceptionWhenIdIsNull() {
+        assertThrows(InvalidUserDataException.class, () -> User.builder().id(null).build());
+   }
+
     @Test
     void shouldThrowExceptionWhenNameIsNull() {
-        assertThrows(InvalidUserDataException.class, () ->
-                new User(null, null, null, null, null, null,
-                        null));
+        assertThrows(InvalidUserDataException.class, () -> User.builder().name(null).build());
     }
 
-//    @Test
-//    void shouldThrowExceptionWhenPhoneIsNullOrEmpty() {
-//        assertThrows(InvalidUserDataException.class, () ->
-//                new User(UserId.generate(), "John Doe", new Email("john@doe.com"), "",
-//                        "", null, null, null));
-//        assertThrows(InvalidUserDataException.class, () ->
-//                new User(UserId.generate(), "John Doe", null, null, null,
-//                        null, null, null));
-//    }
-//
-//    @Test
-//    void shouldThrowExceptionWhenDocumentIsNull() {
-//        assertThrows(InvalidUserDataException.class, () ->
-//                new User(UserId.generate(), "John Doe", new Email("john@doe.com"), "+1234567890",
-//                        "", null, null, null));
-//    }
-//
-//    @Test
-//    void shouldThrowExceptionWhenAccountsAreNull() {
-//        assertThrows(InvalidUserDataException.class, () -> {
-//            var document = new Document("12345678901", DocumentType.CPF);
-//            new User(UserId.generate(), "John Doe", new Email("john@doe.com"), "+1234567890",
-//                    "", document, null, null);
-//        });
-//    }
+    @Test
+    void shouldThrowExceptionWhenPhoneIsNullOrEmpty() {
+        assertThrows(InvalidUserDataException.class, () -> User.builder().phone(null).build());
+        assertThrows(InvalidUserDataException.class, () -> User.builder().phone("   ").build());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenPasswordIsNull() {
+        assertThrows(InvalidUserDataException.class, () -> User.builder().password(null).build());
+        assertThrows(InvalidUserDataException.class, () -> User.builder().password("").build());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenDocumentIsNull() {
+        assertThrows(InvalidUserDataException.class, () -> User.builder().document(null).build());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenAccountsAreNull() {
+        assertThrows(InvalidUserDataException.class, () -> User.builder().accounts(null).build());
+    }
 }
