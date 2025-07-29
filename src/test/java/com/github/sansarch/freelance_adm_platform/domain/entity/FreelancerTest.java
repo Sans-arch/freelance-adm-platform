@@ -26,8 +26,8 @@ class FreelancerTest {
         assertEquals(email, freelancer.getEmail());
         assertEquals(phone, freelancer.getPhone());
         assertNotNull(freelancer.getDocument());
-        assertEquals("12345678901", freelancer.getDocument().getValue());
-        assertEquals(DocumentType.CPF, freelancer.getDocument().getType());
+        assertEquals("12345678901", freelancer.getDocument().value());
+        assertEquals(DocumentType.CPF, freelancer.getDocument().type());
     }
 
     @Test

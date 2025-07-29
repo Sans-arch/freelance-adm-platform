@@ -4,7 +4,6 @@ import com.github.sansarch.freelance_adm_platform.user.application.gateway.UserG
 import com.github.sansarch.freelance_adm_platform.user.application.usecase.command.CreateUserCommand;
 import com.github.sansarch.freelance_adm_platform.user.application.usecase.response.UserCreatedResponse;
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.User;
-import com.github.sansarch.freelance_adm_platform.user.domain.factory.UserFactory;
 
 public final class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final UserGateway userGateway;
@@ -15,27 +14,25 @@ public final class CreateUserUseCaseImpl implements CreateUserUseCase {
 
     @Override
     public UserCreatedResponse execute(CreateUserCommand dto) {
-        User user = UserFactory.createUser(
-                dto.name(),
-                dto.email(),
-                dto.phone(),
-                dto.password(),
-                dto.document(),
-                dto.accounts(),
-                dto.mainAccount()
-        );
+        User user = User.builder()
+                .name(dto.name())
+                .email(dto.email())
+                .phone(dto.phone())
+                .password(dto.password())
+                .document(dto.document())
+                .accounts(dto.accounts())
+                .build();
 
         userGateway.save(user);
 
         return new UserCreatedResponse(
                 user.getId().getValue(),
                 user.getName(),
-                user.getEmail().getValue(),
+                user.getEmail().value(),
                 user.getPhone(),
                 user.getPassword(),
                 user.getDocument(),
-                user.getAccounts(),
-                user.getMainAccount()
+                user.getAccounts()
         );
     }
 }

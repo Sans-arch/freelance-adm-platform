@@ -4,13 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "customers")
 @Entity
 public class CustomerModel {
@@ -29,4 +25,14 @@ public class CustomerModel {
 
     @Column
     private String document;
+
+    public CustomerModel() {}
+
+    public CustomerModel(UUID id, String name, String email, String phone, String document) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.document = document;
+    }
 }

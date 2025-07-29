@@ -12,7 +12,7 @@ class DocumentTest {
     @Test
     void shouldCreateValidCPF() {
         Document document = new Document("12345678901", DocumentType.CPF);
-        assertEquals("12345678901", document.getValue());
+        assertEquals("12345678901", document.value());
         assertTrue(document.isCpf());
         assertFalse(document.isCnpj());
     }
@@ -20,7 +20,7 @@ class DocumentTest {
     @Test
     void shouldCreateValidCNPJ() {
         Document document = new Document("12345678000195", DocumentType.CNPJ);
-        assertEquals("12345678000195", document.getValue());
+        assertEquals("12345678000195", document.value());
         assertFalse(document.isCpf());
         assertTrue(document.isCnpj());
     }

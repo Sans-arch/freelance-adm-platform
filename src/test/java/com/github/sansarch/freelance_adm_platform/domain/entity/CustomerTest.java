@@ -29,8 +29,8 @@ class CustomerTest {
         assertEquals(email, customer.getEmail());
         assertEquals(phone, customer.getPhone());
         assertNotNull(customer.getDocument());
-        assertEquals("12345678901", customer.getDocument().getValue());
-        assertEquals(DocumentType.CPF, customer.getDocument().getType());
+        assertEquals("12345678901", customer.getDocument().value());
+        assertEquals(DocumentType.CPF, customer.getDocument().type());
     }
 
     @Test
