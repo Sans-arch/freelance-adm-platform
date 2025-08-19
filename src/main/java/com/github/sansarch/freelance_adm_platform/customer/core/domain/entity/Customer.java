@@ -1,8 +1,8 @@
-package com.github.sansarch.freelance_adm_platform.customer.domain.entity;
+package com.github.sansarch.freelance_adm_platform.customer.core.domain.entity;
 
 import com.github.sansarch.freelance_adm_platform.shared.domain.entity.AggregateRoot;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
-import com.github.sansarch.freelance_adm_platform.customer.domain.exception.InvalidCustomerException;
+import com.github.sansarch.freelance_adm_platform.customer.core.domain.exception.InvalidCustomerException;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 
 public final class Customer implements AggregateRoot {

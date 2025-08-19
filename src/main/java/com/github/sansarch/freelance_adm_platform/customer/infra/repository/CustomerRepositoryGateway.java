@@ -1,7 +1,7 @@
 package com.github.sansarch.freelance_adm_platform.customer.infra.repository;
 
 import com.github.sansarch.freelance_adm_platform.customer.application.gateway.CustomerGateway;
-import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
+import com.github.sansarch.freelance_adm_platform.customer.core.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.customer.infra.persistence.CustomerJpaRepository;
 
 public class CustomerRepositoryGateway implements CustomerGateway {

@@ -2,7 +2,7 @@ package com.github.sansarch.freelance_adm_platform.customer.application.usecase;
 
 import com.github.sansarch.freelance_adm_platform.customer.application.gateway.CustomerGateway;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.dto.CreateCustomerDto;
-import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
+import com.github.sansarch.freelance_adm_platform.customer.core.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 
 public class CreateCustomerUseCaseImpl implements CreateCustomerUseCase {

@@ -1,6 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.customer.application.gateway;
 
-import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
+import com.github.sansarch.freelance_adm_platform.customer.core.domain.entity.Customer;
 
 public interface CustomerGateway {
 
