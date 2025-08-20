@@ -9,6 +9,6 @@ public interface ProjectRepository {
     Optional<Project> findById(String id);
     void deleteById(String id);
     boolean existsById(String id);
-    boolean existsByName(String name);
+    boolean existsByTitle(String name);
     void update(Project project);
 }
