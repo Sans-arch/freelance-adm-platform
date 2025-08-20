@@ -4,15 +4,18 @@ import com.github.sansarch.freelance_adm_platform.customer.application.usecase.C
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.shared.Port;
 import com.github.sansarch.freelance_adm_platform.shared.application.UseCase;
-import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
-import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 
 public interface CreateCustomerUseCase extends UseCase<CreateCustomerCmd, Customer>, Port {
 
     record CreateCustomerCmd(
         String name,
-        Email email,
+        String email,
         String phone,
         Document document
-    ) {}
+    ) {
+        public record Document(
+            String value,
+            String type
+        ) { }
+    }
 }
