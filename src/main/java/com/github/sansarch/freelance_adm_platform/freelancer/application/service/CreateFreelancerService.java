@@ -3,6 +3,9 @@ package com.github.sansarch.freelance_adm_platform.freelancer.application.servic
 import com.github.sansarch.freelance_adm_platform.freelancer.application.usecase.CreateFreelancerUseCase;
 import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.Freelancer;
 import com.github.sansarch.freelance_adm_platform.freelancer.domain.repository.FreelancerRepository;
+import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,17 +17,17 @@ public class CreateFreelancerService implements CreateFreelancerUseCase {
     }
 
     public Freelancer execute(CreateFreelancerCmd cmd) {
-        boolean freelancerAlreadyExists = freelancerRepository.existsByEmail(cmd.email());
+        boolean freelancerAlreadyExists = freelancerRepository.existsByEmail(new Email(cmd.email()));
 
         if (freelancerAlreadyExists) {
             throw new IllegalArgumentException("Freelancer with email " + cmd.email() + " already exists.");
         }
 
         Freelancer freelancer = new Freelancer(
-                cmd.name(),
-                cmd.email(),
-                cmd.phone(),
-                cmd.document()
+            cmd.name(),
+            new Email(cmd.email()),
+            cmd.phone(),
+            new Document(cmd.document().value(), DocumentType.fromValue(cmd.document().type()))
         );
 
         return freelancerRepository.save(freelancer);
