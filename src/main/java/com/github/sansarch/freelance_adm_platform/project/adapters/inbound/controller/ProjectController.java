@@ -5,6 +5,7 @@ import com.github.sansarch.freelance_adm_platform.project.application.usecase.Cr
 import com.github.sansarch.freelance_adm_platform.project.application.usecase.CreateProjectUseCase.CreateProjectCmd;
 import com.github.sansarch.freelance_adm_platform.project.domain.entity.Project;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class ProjectController {
     }
 
     @PostMapping
-    public Project createProject(CreateProjectRequestDto dto) {
+    public Project createProject(@RequestBody CreateProjectRequestDto dto) {
         var cmd = new CreateProjectCmd(
             dto.title(),
             dto.description(),
