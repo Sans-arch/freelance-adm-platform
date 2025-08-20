@@ -1,8 +1,10 @@
 package com.github.sansarch.freelance_adm_platform.project.domain.enums;
 
+import com.github.sansarch.freelance_adm_platform.project.domain.exception.InvalidProjectStatus;
+
 public enum ProjectStatus {
     PENDING,
-    IN_PROGRESS,
+    WAITING_PROPOSAL,
     COMPLETED,
     CANCELLED;
 
@@ -12,6 +14,6 @@ public enum ProjectStatus {
                 return ps;
             }
         }
-        throw new IllegalArgumentException("Unknown project status: " + status);
+        throw new InvalidProjectStatus("Unknown project status: " + status);
     }
 }
