@@ -3,11 +3,12 @@ package com.github.sansarch.freelance_adm_platform.customer.adapters.outbound.re
 import com.github.sansarch.freelance_adm_platform.customer.adapters.outbound.repository.model.CustomerModel;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
-import com.github.sansarch.freelance_adm_platform.customer.domain.exception.CustomerNotFoundException;
 import com.github.sansarch.freelance_adm_platform.customer.domain.repository.CustomerRepository;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
@@ -31,7 +32,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Customer findById(CustomerId id) {
+    public Optional<Customer> findById(CustomerId id) {
         return customerJpaRepository.findById(id)
                 .map(model -> new Customer(
                         CustomerId.from(model.getId()),
@@ -39,8 +40,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                         new Email(model.getEmail()),
                         model.getPhone(),
                         new Document(model.getDocument(), model.getDocumentType())
-                ))
-                .orElseThrow(() -> new CustomerNotFoundException("Customer not found with id: " + id.getValue()));
+                ));
     }
 
     @Override

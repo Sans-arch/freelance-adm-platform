@@ -4,9 +4,11 @@ import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Custome
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 
+import java.util.Optional;
+
 public interface CustomerRepository {
     Customer save(Customer customer);
-    Customer findById(CustomerId id);
+    Optional<Customer> findById(CustomerId id);
     boolean existsByEmail(Email email);
     void deleteById(CustomerId id);
 }
