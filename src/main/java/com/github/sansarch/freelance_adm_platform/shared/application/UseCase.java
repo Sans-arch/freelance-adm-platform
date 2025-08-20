@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.shared.application.usecase;
+package com.github.sansarch.freelance_adm_platform.shared.application;
 
 /**
  * A generic interface for use cases in the application layer.

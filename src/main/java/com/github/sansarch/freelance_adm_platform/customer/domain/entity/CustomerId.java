@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.customer.core.domain.entity;
+package com.github.sansarch.freelance_adm_platform.customer.domain.entity;
 
 import java.util.UUID;
 

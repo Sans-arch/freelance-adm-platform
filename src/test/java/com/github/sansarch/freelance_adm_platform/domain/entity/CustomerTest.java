@@ -1,10 +1,10 @@
 package com.github.sansarch.freelance_adm_platform.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.customer.core.domain.entity.Customer;
-import com.github.sansarch.freelance_adm_platform.customer.core.domain.entity.CustomerId;
+import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
+import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
 import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
-import com.github.sansarch.freelance_adm_platform.customer.core.domain.exception.InvalidCustomerException;
+import com.github.sansarch.freelance_adm_platform.customer.domain.exception.InvalidCustomerException;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,6 @@ class CustomerTest {
         Email email = new Email("john@doe.com");
         String phone = "+1234567890";
         Document document = new Document("12345678901", DocumentType.CPF);
-
         var customer = new Customer(name, email, phone, document);
 
         assertNotNull(customer.getId());
