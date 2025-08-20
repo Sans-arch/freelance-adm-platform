@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.user.infra.repository.model;
+package com.github.sansarch.freelance_adm_platform.user.adapters.outbound.repository.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
