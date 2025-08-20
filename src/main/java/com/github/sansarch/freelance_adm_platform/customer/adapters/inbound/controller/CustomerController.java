@@ -6,14 +6,14 @@ import com.github.sansarch.freelance_adm_platform.customer.application.usecase.C
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase.GetCustomerByIdCmd;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
-import com.github.sansarch.freelance_adm_platform.shared.DrivingAdapter;
+import com.github.sansarch.freelance_adm_platform.shared.DriverAdapter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/customers")
-public class CustomerController implements DrivingAdapter {
+public class CustomerController implements DriverAdapter {
     private final CreateCustomerUseCase createCustomerUseCase;
     private final GetCustomerByIdUseCase getCustomerByIdUseCase;
 

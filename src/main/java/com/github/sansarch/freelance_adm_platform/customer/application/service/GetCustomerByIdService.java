@@ -5,11 +5,11 @@ import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Custome
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
 import com.github.sansarch.freelance_adm_platform.customer.domain.exception.CustomerNotFoundException;
 import com.github.sansarch.freelance_adm_platform.customer.domain.repository.CustomerRepository;
-import com.github.sansarch.freelance_adm_platform.shared.DrivingAdapter;
+import com.github.sansarch.freelance_adm_platform.shared.DriverAdapter;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GetCustomerByIdService implements GetCustomerByIdUseCase, DrivingAdapter {
+public class GetCustomerByIdService implements GetCustomerByIdUseCase, DriverAdapter {
     private final CustomerRepository customerRepository;
 
     public GetCustomerByIdService(CustomerRepository customerRepository) {

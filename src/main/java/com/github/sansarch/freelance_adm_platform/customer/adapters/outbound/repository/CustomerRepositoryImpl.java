@@ -4,6 +4,7 @@ import com.github.sansarch.freelance_adm_platform.customer.adapters.outbound.rep
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
 import com.github.sansarch.freelance_adm_platform.customer.domain.repository.CustomerRepository;
+import com.github.sansarch.freelance_adm_platform.shared.DrivenAdapter;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Document;
 import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class CustomerRepositoryImpl implements CustomerRepository {
+public class CustomerRepositoryImpl implements CustomerRepository, DrivenAdapter {
     private final CustomerJpaRepository customerJpaRepository;
 
     public CustomerRepositoryImpl(CustomerJpaRepository customerJpaRepository) {

@@ -3,7 +3,7 @@ package com.github.sansarch.freelance_adm_platform.freelancer.adapters.inbound.c
 import com.github.sansarch.freelance_adm_platform.freelancer.adapters.inbound.controller.dto.CreateFreelancerRequestDto;
 import com.github.sansarch.freelance_adm_platform.freelancer.application.usecase.CreateFreelancerUseCase;
 import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.Freelancer;
-import com.github.sansarch.freelance_adm_platform.shared.DrivingAdapter;
+import com.github.sansarch.freelance_adm_platform.shared.DriverAdapter;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/freelancers")
-public class FreelancerController implements DrivingAdapter {
+public class FreelancerController implements DriverAdapter {
     private final CreateFreelancerUseCase createFreelancerUseCase;
 
     public FreelancerController(CreateFreelancerUseCase createFreelancerUseCase) {
