@@ -3,20 +3,24 @@ package com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.con
 import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.dto.CreateCustomerRequestDto;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase.GetCustomerByIdCmd;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.shared.DrivingAdapter;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/customers")
 public class CustomerController implements DrivingAdapter {
     private final CreateCustomerUseCase createCustomerUseCase;
+    private final GetCustomerByIdUseCase getCustomerByIdUseCase;
 
-    public CustomerController(CreateCustomerUseCase createCustomerUseCase) {
+    public CustomerController(CreateCustomerUseCase createCustomerUseCase,
+                              GetCustomerByIdUseCase getCustomerByIdUseCase) {
         this.createCustomerUseCase = createCustomerUseCase;
+        this.getCustomerByIdUseCase = getCustomerByIdUseCase;
     }
 
     @PostMapping
@@ -29,5 +33,10 @@ public class CustomerController implements DrivingAdapter {
                 new CreateCustomerCmd.Document(dto.document().value(), dto.document().type())
             )
         );
+    }
+
+    @GetMapping("/{id}")
+    public Customer getCustomer(@PathVariable UUID id) {
+       return this.getCustomerByIdUseCase.execute(new GetCustomerByIdCmd(id));
     }
 }

@@ -33,7 +33,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Optional<Customer> findById(CustomerId id) {
-        return customerJpaRepository.findById(id)
+        return customerJpaRepository.findById(id.getValue())
                 .map(model -> new Customer(
                         CustomerId.from(model.getId()),
                         model.getName(),
@@ -50,6 +50,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void deleteById(CustomerId id) {
-        customerJpaRepository.deleteById(id);
+        customerJpaRepository.deleteById(id.getValue());
     }
 }
