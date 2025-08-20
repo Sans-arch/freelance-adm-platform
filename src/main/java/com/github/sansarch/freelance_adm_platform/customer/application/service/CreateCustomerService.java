@@ -14,18 +14,18 @@ public class CreateCustomerService implements CreateCustomerUseCase {
     }
 
     @Override
-    public Customer execute(CreateCustomerCmd input) {
-        boolean customerAlreadyExists  = customerRepository.existsByEmail(input.email());
+    public Customer execute(CreateCustomerCmd cmd) {
+        boolean customerAlreadyExists  = customerRepository.existsByEmail(cmd.email());
 
         if (customerAlreadyExists) {
-            throw new IllegalArgumentException("Customer with email " + input.email() + " already exists.");
+            throw new IllegalArgumentException("Customer with email " + cmd.email() + " already exists.");
         }
 
         Customer customer = new Customer(
-            input.name(),
-            input.email(),
-            input.phone(),
-            input.document()
+            cmd.name(),
+            cmd.email(),
+            cmd.phone(),
+            cmd.document()
         );
 
         return customerRepository.save(customer);

@@ -9,6 +9,10 @@ public final class FreelancerId {
         this.id = id;
     }
 
+    public static FreelancerId from(UUID id) {
+        return new FreelancerId(id);
+    }
+
     public static FreelancerId generate() {
         return new FreelancerId(UUID.randomUUID());
     }
