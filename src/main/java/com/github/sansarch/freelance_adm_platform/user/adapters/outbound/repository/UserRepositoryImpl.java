@@ -1,5 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.user.adapters.outbound.repository;
 
+import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import com.github.sansarch.freelance_adm_platform.user.domain.entity.User;
 import com.github.sansarch.freelance_adm_platform.user.domain.repository.UserRepository;
 import org.springframework.stereotype.Repository;
@@ -30,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean existsByEmail(String email) {
+    public boolean existsByEmail(Email email) {
         return false;
     }
 

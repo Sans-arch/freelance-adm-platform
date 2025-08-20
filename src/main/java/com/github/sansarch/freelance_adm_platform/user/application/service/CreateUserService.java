@@ -14,20 +14,20 @@ public final class CreateUserService implements CreateUserUseCase {
     }
 
     @Override
-    public User execute(CreateUserCommand input) {
-        boolean userAlreadyExists  = userRepository.existsByEmail(input.email());
+    public User execute(CreateUserCommand cmd) {
+        boolean userAlreadyExists  = userRepository.existsByEmail(cmd.email());
 
         if (userAlreadyExists) {
-            throw new IllegalArgumentException("User with email " + input.email() + " already exists.");
+            throw new IllegalArgumentException("User with email " + cmd.email() + " already exists.");
         }
 
         User user = new User(
-            input.name(),
-            input.email(),
-            input.phone(),
-            input.password(),
-            input.document(),
-            input.accounts()
+            cmd.name(),
+            cmd.email(),
+            cmd.phone(),
+            cmd.password(),
+            cmd.document(),
+            cmd.accounts()
         );
 
         return userRepository.save(user);
