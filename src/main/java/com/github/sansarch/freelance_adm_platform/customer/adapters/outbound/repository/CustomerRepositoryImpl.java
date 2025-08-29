@@ -50,6 +50,11 @@ public class CustomerRepositoryImpl implements CustomerRepository, DrivenAdapter
     }
 
     @Override
+    public boolean existsById(CustomerId id) {
+        return customerJpaRepository.existsById(id.getValue());
+    }
+
+    @Override
     public void deleteById(CustomerId id) {
         customerJpaRepository.deleteById(id.getValue());
     }

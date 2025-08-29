@@ -3,11 +3,12 @@ package com.github.sansarch.freelance_adm_platform.project.domain.entity;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
 import com.github.sansarch.freelance_adm_platform.project.domain.enums.ProjectStatus;
 import com.github.sansarch.freelance_adm_platform.project.domain.exception.InvalidProjectException;
+import com.github.sansarch.freelance_adm_platform.shared.domain.entity.AggregateRoot;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public final class Project {
+public final class Project implements AggregateRoot {
     private final ProjectId id;
     private final String title;
     private final String description;

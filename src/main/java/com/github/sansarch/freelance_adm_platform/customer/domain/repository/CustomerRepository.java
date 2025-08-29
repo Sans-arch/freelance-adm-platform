@@ -10,5 +10,6 @@ public interface CustomerRepository {
     Customer save(Customer customer);
     Optional<Customer> findById(CustomerId id);
     boolean existsByEmail(Email email);
+    boolean existsById(CustomerId id);
     void deleteById(CustomerId id);
 }
