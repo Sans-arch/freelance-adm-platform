@@ -19,6 +19,6 @@ public class GetCustomerByIdService implements GetCustomerByIdUseCase, DriverAda
     @Override
     public Customer execute(GetCustomerByIdCmd cmd) {
         return customerRepository.findById(CustomerId.from(cmd.id()))
-                .orElseThrow(() -> new CustomerNotFoundException("Customer not found with id: " + cmd.id()));
+                .orElseThrow(() -> new CustomerNotFoundException(cmd.id()));
     }
 }

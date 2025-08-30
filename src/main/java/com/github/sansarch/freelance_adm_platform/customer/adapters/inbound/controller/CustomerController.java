@@ -1,10 +1,12 @@
 package com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller;
 
 import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.dto.CreateCustomerRequestDto;
+import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.openapi.CustomerControllerOpenApi;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase.GetCustomerByIdCmd;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd.CreateCustomerCmdDocument;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.shared.DriverAdapter;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/customers")
-public class CustomerController implements DriverAdapter {
+public class CustomerController implements CustomerControllerOpenApi, DriverAdapter {
     private final CreateCustomerUseCase createCustomerUseCase;
     private final GetCustomerByIdUseCase getCustomerByIdUseCase;
 
@@ -30,7 +32,7 @@ public class CustomerController implements DriverAdapter {
                 dto.name(),
                 dto.email(),
                 dto.phone(),
-                new CreateCustomerCmd.Document(dto.document().value(), dto.document().type())
+                new CreateCustomerCmdDocument(dto.document().value(), dto.document().type())
             )
         );
     }

@@ -39,7 +39,7 @@ public class CreateProjectService implements CreateProjectUseCase {
 
     private void validateCustomer(UUID customerId) {
         if (!customerRepository.existsById(CustomerId.from(customerId))) {
-            throw new CustomerNotFoundException("Customer with ID " + customerId + " does not exist.");
+            throw new CustomerNotFoundException(customerId);
         }
     }
 }

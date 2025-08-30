@@ -11,9 +11,9 @@ public interface CreateCustomerUseCase extends UseCase<CreateCustomerCmd, Custom
         String name,
         String email,
         String phone,
-        Document document
+        CreateCustomerCmdDocument document
     ) {
-        public record Document(
+        public record CreateCustomerCmdDocument(
             String value,
             String type
         ) { }
