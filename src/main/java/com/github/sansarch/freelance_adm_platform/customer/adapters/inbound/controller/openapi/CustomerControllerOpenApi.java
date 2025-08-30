@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.UUID;
 
+@Tag(name = "Customers", description = "Customer management API")
 public interface CustomerControllerOpenApi {
 
-    @Tag(name = "Customers")
     @Operation(summary = "Create a new customer")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Customer created successfully"),
@@ -21,7 +21,6 @@ public interface CustomerControllerOpenApi {
     })
     Customer createCustomer(@RequestBody(required = true) CreateCustomerRequestDto dto);
 
-    @Tag(name = "Customers")
     @Operation(summary = "Get a customer by ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Customer retrieved successfully"),

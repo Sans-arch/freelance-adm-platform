@@ -8,9 +8,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Projects", description = "Project management API")
 public interface ProjectControllerOpenApi {
 
-    @Tag(name = "Projects")
     @Operation(summary = "Create a new project")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Project created successfully"),

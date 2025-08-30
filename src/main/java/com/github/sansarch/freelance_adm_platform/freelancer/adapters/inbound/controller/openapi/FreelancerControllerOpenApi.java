@@ -8,9 +8,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Freelancers", description = "Freelancer management API")
 public interface FreelancerControllerOpenApi {
 
-    @Tag(name = "Freelancers")
     @Operation(summary = "Create a new freelancer")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Freelancer created successfully"),
