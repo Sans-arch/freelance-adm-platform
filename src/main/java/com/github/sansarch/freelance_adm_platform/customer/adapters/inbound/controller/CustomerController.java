@@ -1,14 +1,16 @@
 package com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller;
 
 import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.dto.CreateCustomerRequestDto;
+import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.dto.CreateCustomerResponseDto;
 import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.openapi.CustomerControllerOpenApi;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd.CreateCustomerCmdDocument;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCase.GetCustomerByIdCmd;
-import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd.CreateCustomerCmdDocument;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.shared.DriverAdapter;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,8 +28,8 @@ public class CustomerController implements CustomerControllerOpenApi, DriverAdap
     }
 
     @PostMapping
-    public Customer createCustomer(@RequestBody CreateCustomerRequestDto dto) {
-        return this.createCustomerUseCase.execute(
+    public ResponseEntity<CreateCustomerResponseDto> createCustomer(@RequestBody CreateCustomerRequestDto dto) {
+        var customer = this.createCustomerUseCase.execute(
             new CreateCustomerCmd(
                 dto.name(),
                 dto.email(),
@@ -35,6 +37,8 @@ public class CustomerController implements CustomerControllerOpenApi, DriverAdap
                 new CreateCustomerCmdDocument(dto.document().value(), dto.document().type())
             )
         );
+
+        return ResponseEntity.ok(CreateCustomerResponseDto.fromDomain(customer));
     }
 
     @GetMapping("/{id}")

@@ -1,12 +1,14 @@
 package com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.openapi;
 
 import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.dto.CreateCustomerRequestDto;
+import com.github.sansarch.freelance_adm_platform.customer.adapters.inbound.controller.dto.CreateCustomerResponseDto;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.UUID;
@@ -19,7 +21,7 @@ public interface CustomerControllerOpenApi {
         @ApiResponse(responseCode = "200", description = "Customer created successfully"),
         @ApiResponse(responseCode = "400", description = "Invalid input data")
     })
-    Customer createCustomer(@RequestBody(required = true) CreateCustomerRequestDto dto);
+    ResponseEntity<CreateCustomerResponseDto> createCustomer(@RequestBody(required = true) CreateCustomerRequestDto dto);
 
     @Operation(summary = "Get a customer by ID")
     @ApiResponses(value = {
