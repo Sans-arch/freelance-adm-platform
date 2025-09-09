@@ -26,7 +26,7 @@ class ProjectTest {
         assertNotNull(project.getId());
         assertEquals("Test Project", project.getTitle());
         assertEquals("This is a test project", project.getDescription());
-        assertEquals(ProjectStatus.PENDING, project.getStatus());
+        assertEquals(ProjectStatus.WAITING_PROPOSAL, project.getStatus());
         assertNotNull(project.getDeadLine());
         assertEquals(BigDecimal.valueOf(1000), project.getBudget());
     }

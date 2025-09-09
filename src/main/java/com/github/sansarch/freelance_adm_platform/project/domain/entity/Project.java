@@ -32,7 +32,7 @@ public final class Project implements AggregateRoot {
         this.id = ProjectId.generate();
         this.title = title;
         this.description = description;
-        this.status = ProjectStatus.PENDING;
+        this.status = ProjectStatus.WAITING_PROPOSAL;
         this.deadLine = deadLine;
         this.budget = budget;
         this.customerId = customerId;

@@ -3,7 +3,6 @@ package com.github.sansarch.freelance_adm_platform.project.domain.enums;
 import com.github.sansarch.freelance_adm_platform.project.domain.exception.InvalidProjectStatus;
 
 public enum ProjectStatus {
-    PENDING,
     WAITING_PROPOSAL,
     COMPLETED,
     CANCELLED;

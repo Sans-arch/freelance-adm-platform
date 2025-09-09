@@ -8,6 +8,7 @@ import com.github.sansarch.freelance_adm_platform.shared.Port;
 import com.github.sansarch.freelance_adm_platform.shared.application.UseCaseInOut;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public interface PlaceBidUseCase extends UseCaseInOut<PlaceBidCmd, Bid>, Port {
 
@@ -18,5 +19,14 @@ public interface PlaceBidUseCase extends UseCaseInOut<PlaceBidCmd, Bid>, Port {
             Integer daysToComplete,
             String proposalMessage
     ) {
+        public static PlaceBidCmd from(UUID projectId, UUID freelancerId, BigDecimal amount, Integer daysToComplete, String proposalMessage) {
+            return new PlaceBidCmd(
+                    ProjectId.from(projectId),
+                    FreelancerId.from(freelancerId),
+                    amount,
+                    daysToComplete,
+                    proposalMessage
+            );
+        }
     }
 }
