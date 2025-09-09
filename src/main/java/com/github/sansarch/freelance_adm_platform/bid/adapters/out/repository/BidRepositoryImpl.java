@@ -1,11 +1,11 @@
-package com.github.sansarch.freelance_adm_platform.project.adapters.out.repository;
+package com.github.sansarch.freelance_adm_platform.bid.adapters.out.repository;
 
-import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.FreelancerId;
-import com.github.sansarch.freelance_adm_platform.project.adapters.out.repository.model.BidModel;
+import com.github.sansarch.freelance_adm_platform.bid.adapters.out.repository.model.BidModel;
 import com.github.sansarch.freelance_adm_platform.bid.domain.entity.Bid;
 import com.github.sansarch.freelance_adm_platform.bid.domain.entity.BidId;
-import com.github.sansarch.freelance_adm_platform.project.domain.entity.ProjectId;
 import com.github.sansarch.freelance_adm_platform.bid.domain.repository.BidRepository;
+import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.FreelancerId;
+import com.github.sansarch.freelance_adm_platform.project.domain.entity.ProjectId;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -65,5 +65,10 @@ public class BidRepositoryImpl implements BidRepository {
     @Override
     public void update(Bid bid) {
         // No implementation needed for now
+    }
+
+    @Override
+    public boolean existsByProjectIdAndFreelancerId(ProjectId projectId, FreelancerId freelancerId) {
+        return bidJpaRepository.existsByProjectIdAndFreelancerId(projectId.getValue(), freelancerId.getValue());
     }
 }

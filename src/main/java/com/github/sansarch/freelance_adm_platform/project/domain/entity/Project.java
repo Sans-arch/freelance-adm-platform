@@ -1,6 +1,5 @@
 package com.github.sansarch.freelance_adm_platform.project.domain.entity;
 
-import com.github.sansarch.freelance_adm_platform.bid.domain.entity.Bid;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
 import com.github.sansarch.freelance_adm_platform.project.domain.enums.ProjectStatus;
 import com.github.sansarch.freelance_adm_platform.project.domain.exception.InvalidProjectException;
@@ -8,7 +7,6 @@ import com.github.sansarch.freelance_adm_platform.shared.domain.entity.Aggregate
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 public final class Project implements AggregateRoot {
     private final ProjectId id;
@@ -18,9 +16,8 @@ public final class Project implements AggregateRoot {
     private final LocalDateTime deadLine;
     private final BigDecimal budget;
     private final CustomerId customerId;
-    private final Set<Bid> bids;
 
-    public Project(ProjectId id, String title, String description, ProjectStatus status, LocalDateTime deadLine, BigDecimal budget, CustomerId customerId, Set<Bid> bids) {
+    public Project(ProjectId id, String title, String description, ProjectStatus status, LocalDateTime deadLine, BigDecimal budget, CustomerId customerId) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -28,11 +25,10 @@ public final class Project implements AggregateRoot {
         this.deadLine = deadLine;
         this.budget = budget;
         this.customerId = customerId;
-        this.bids = bids;
         validate();
     }
 
-    public Project(String title, String description, LocalDateTime deadLine, BigDecimal budget, CustomerId customerId, Set<Bid> bids) {
+    public Project(String title, String description, LocalDateTime deadLine, BigDecimal budget, CustomerId customerId) {
         this.id = ProjectId.generate();
         this.title = title;
         this.description = description;
@@ -40,7 +36,6 @@ public final class Project implements AggregateRoot {
         this.deadLine = deadLine;
         this.budget = budget;
         this.customerId = customerId;
-        this.bids = bids;
         validate();
     }
 

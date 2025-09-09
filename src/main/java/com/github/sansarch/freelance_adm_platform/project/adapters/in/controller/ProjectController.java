@@ -2,8 +2,8 @@ package com.github.sansarch.freelance_adm_platform.project.adapters.in.controlle
 
 import com.github.sansarch.freelance_adm_platform.project.adapters.in.controller.dto.CreateProjectRequestDto;
 import com.github.sansarch.freelance_adm_platform.project.adapters.in.controller.openapi.ProjectControllerOpenApi;
-import com.github.sansarch.freelance_adm_platform.project.application.usecase.CreateProjectUseCase;
-import com.github.sansarch.freelance_adm_platform.project.application.usecase.CreateProjectUseCase.CreateProjectCmd;
+import com.github.sansarch.freelance_adm_platform.project.application.usecase.CreateProjectUseCaseInOut;
+import com.github.sansarch.freelance_adm_platform.project.application.usecase.CreateProjectUseCaseInOut.CreateProjectCmd;
 import com.github.sansarch.freelance_adm_platform.project.domain.entity.Project;
 import com.github.sansarch.freelance_adm_platform.shared.DriverAdapter;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/projects")
 public class ProjectController implements ProjectControllerOpenApi, DriverAdapter {
-    private final CreateProjectUseCase createProjectUseCase;
+    private final CreateProjectUseCaseInOut createProjectUseCase;
 
-    public ProjectController(CreateProjectUseCase createProjectUseCase) {
+    public ProjectController(CreateProjectUseCaseInOut createProjectUseCase) {
         this.createProjectUseCase = createProjectUseCase;
     }
 

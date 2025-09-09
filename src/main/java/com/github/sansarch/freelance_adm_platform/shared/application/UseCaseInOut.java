@@ -6,6 +6,6 @@ package com.github.sansarch.freelance_adm_platform.shared.application;
  * @param <I> the type of input to the use case
  * @param <O> the type of output from the use case
  */
-public interface UseCase<I, O> {
+public interface UseCaseInOut<I, O> {
     O execute(I input);
 }

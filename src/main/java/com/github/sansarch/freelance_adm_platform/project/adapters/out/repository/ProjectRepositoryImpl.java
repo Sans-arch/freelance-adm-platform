@@ -8,7 +8,6 @@ import com.github.sansarch.freelance_adm_platform.project.domain.repository.Proj
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository
 public class ProjectRepositoryImpl implements ProjectRepository {
@@ -34,8 +33,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Optional<Project> findById(UUID id) {
-        return projectJpaRepository.findById(id).map(
+    public Optional<Project> findById(ProjectId id) {
+        return projectJpaRepository.findById(id.getValue()).map(
                 model -> new Project(
                         ProjectId.from(model.getId()),
                         model.getTitle(),
@@ -44,17 +43,16 @@ public class ProjectRepositoryImpl implements ProjectRepository {
                         model.getDeadLine(),
                         model.getBudget(),
                         CustomerId.from(model.getCustomerId())
-                )
-        );
+                ));
     }
 
     @Override
-    public void deleteById(String id) {
-
+    public void deleteById(ProjectId id) {
+        // Not implemented
     }
 
     @Override
-    public boolean existsById(String id) {
+    public boolean existsById(ProjectId id) {
         return false;
     }
 

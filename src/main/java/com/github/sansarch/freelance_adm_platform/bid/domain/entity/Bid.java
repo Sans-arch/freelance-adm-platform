@@ -3,10 +3,11 @@ package com.github.sansarch.freelance_adm_platform.bid.domain.entity;
 import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.FreelancerId;
 import com.github.sansarch.freelance_adm_platform.project.domain.entity.ProjectId;
 import com.github.sansarch.freelance_adm_platform.bid.domain.enums.BidStatus;
+import com.github.sansarch.freelance_adm_platform.shared.domain.entity.AggregateRoot;
 
 import java.math.BigDecimal;
 
-public final class Bid {
+public final class Bid implements AggregateRoot {
     private final BidId id;
     private final ProjectId projectId;
     private final FreelancerId freelancerId;

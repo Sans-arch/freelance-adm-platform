@@ -3,7 +3,7 @@ package com.github.sansarch.freelance_adm_platform.project.application.service;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.CustomerId;
 import com.github.sansarch.freelance_adm_platform.customer.domain.exception.CustomerNotFoundException;
 import com.github.sansarch.freelance_adm_platform.customer.domain.repository.CustomerRepository;
-import com.github.sansarch.freelance_adm_platform.project.application.usecase.CreateProjectUseCase;
+import com.github.sansarch.freelance_adm_platform.project.application.usecase.CreateProjectUseCaseInOut;
 import com.github.sansarch.freelance_adm_platform.project.domain.entity.Project;
 import com.github.sansarch.freelance_adm_platform.project.domain.repository.ProjectRepository;
 import jakarta.transaction.Transactional;
@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Service
 @Transactional
-public class CreateProjectService implements CreateProjectUseCase {
+public class CreateProjectService implements CreateProjectUseCaseInOut {
     private final ProjectRepository projectRepository;
     private final CustomerRepository customerRepository;
 

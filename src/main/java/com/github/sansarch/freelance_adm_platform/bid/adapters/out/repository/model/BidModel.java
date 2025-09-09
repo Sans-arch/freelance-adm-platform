@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.project.adapters.out.repository.model;
+package com.github.sansarch.freelance_adm_platform.bid.adapters.out.repository.model;
 
 import com.github.sansarch.freelance_adm_platform.bid.domain.entity.Bid;
 import com.github.sansarch.freelance_adm_platform.bid.domain.enums.BidStatus;

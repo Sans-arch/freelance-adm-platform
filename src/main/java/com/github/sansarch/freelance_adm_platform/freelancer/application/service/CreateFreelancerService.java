@@ -1,6 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.freelancer.application.service;
 
-import com.github.sansarch.freelance_adm_platform.freelancer.application.usecase.CreateFreelancerUseCase;
+import com.github.sansarch.freelance_adm_platform.freelancer.application.usecase.CreateFreelancerUseCaseInOut;
 import com.github.sansarch.freelance_adm_platform.freelancer.domain.entity.Freelancer;
 import com.github.sansarch.freelance_adm_platform.freelancer.domain.repository.FreelancerRepository;
 import com.github.sansarch.freelance_adm_platform.shared.domain.enums.DocumentType;
@@ -9,7 +9,7 @@ import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateFreelancerService implements CreateFreelancerUseCase {
+public class CreateFreelancerService implements CreateFreelancerUseCaseInOut {
     private final FreelancerRepository freelancerRepository;
 
     public CreateFreelancerService(FreelancerRepository freelancerRepository) {
