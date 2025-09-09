@@ -13,27 +13,27 @@ public final class Project implements AggregateRoot {
     private final String title;
     private final String description;
     private final ProjectStatus status;
-    private final LocalDateTime dueDate;
+    private final LocalDateTime deadLine;
     private final BigDecimal budget;
     private final CustomerId customerId;
 
-    public Project(ProjectId id, String title, String description, ProjectStatus status, LocalDateTime dueDate, BigDecimal budget, CustomerId customerId) {
+    public Project(ProjectId id, String title, String description, ProjectStatus status, LocalDateTime deadLine, BigDecimal budget, CustomerId customerId) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
-        this.dueDate = dueDate;
+        this.deadLine = deadLine;
         this.budget = budget;
         this.customerId = customerId;
         validate();
     }
 
-    public Project(String title, String description, LocalDateTime dueDate, BigDecimal budget, CustomerId customerId) {
+    public Project(String title, String description, LocalDateTime deadLine, BigDecimal budget, CustomerId customerId) {
         this.id = ProjectId.generate();
         this.title = title;
         this.description = description;
         this.status = ProjectStatus.PENDING;
-        this.dueDate = dueDate;
+        this.deadLine = deadLine;
         this.budget = budget;
         this.customerId = customerId;
         validate();
@@ -53,8 +53,8 @@ public final class Project implements AggregateRoot {
         if (status == null) {
             throw new InvalidProjectException("Project status cannot be null");
         }
-        if (dueDate == null) {
-            throw new InvalidProjectException("Project due date cannot be null");
+        if (deadLine == null) {
+            throw new InvalidProjectException("Project deadLine cannot be null");
         }
         if (budget == null || budget.compareTo(BigDecimal.ZERO) < 0) {
             throw new InvalidProjectException("Project budget cannot be null or negative");
@@ -77,8 +77,8 @@ public final class Project implements AggregateRoot {
         return status;
     }
 
-    public LocalDateTime getDueDate() {
-        return dueDate;
+    public LocalDateTime getDeadLine() {
+        return deadLine;
     }
 
     public CustomerId getCustomerId() {

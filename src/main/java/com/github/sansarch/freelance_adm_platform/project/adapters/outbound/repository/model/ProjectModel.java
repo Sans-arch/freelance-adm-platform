@@ -26,7 +26,7 @@ public class ProjectModel {
     private ProjectStatus status;
 
     @Column
-    private LocalDateTime dueDate;
+    private LocalDateTime deadLine;
 
     @Column
     private BigDecimal budget;
@@ -41,7 +41,7 @@ public class ProjectModel {
         this.title = project.getTitle();
         this.description = project.getDescription();
         this.status = project.getStatus();
-        this.dueDate = project.getDueDate();
+        this.deadLine = project.getDeadLine();
         this.budget = project.getBudget();
         this.customerId = project.getCustomerId().getValue();
     }
@@ -62,8 +62,8 @@ public class ProjectModel {
         return status;
     }
 
-    public LocalDateTime getDueDate() {
-        return dueDate;
+    public LocalDateTime getDeadLine() {
+        return deadLine;
     }
 
     public BigDecimal getBudget() {

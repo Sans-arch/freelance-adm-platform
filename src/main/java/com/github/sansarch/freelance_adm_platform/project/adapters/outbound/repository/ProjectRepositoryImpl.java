@@ -27,7 +27,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
                 persisted.getTitle(),
                 persisted.getDescription(),
                 persisted.getStatus(),
-                persisted.getDueDate(),
+                persisted.getDeadLine(),
                 persisted.getBudget(),
                 CustomerId.from(persisted.getCustomerId())
         );
@@ -41,7 +41,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
                         model.getTitle(),
                         model.getDescription(),
                         model.getStatus(),
-                        model.getDueDate(),
+                        model.getDeadLine(),
                         model.getBudget(),
                         CustomerId.from(model.getCustomerId())
                 )
