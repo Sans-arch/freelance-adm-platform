@@ -33,3 +33,5 @@ build/
 .vscode/
 
 http_requests/
+
+.env
