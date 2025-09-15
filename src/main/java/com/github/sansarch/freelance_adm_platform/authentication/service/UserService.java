@@ -9,6 +9,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -49,7 +50,11 @@ public class UserService {
             throw new BadCredentialsException("User or password is invalid!");
         }
 
-        var tokenInfo = jwtService.generateToken(user.getId().toString());
+        var tokenInfo = jwtService.generateToken(user);
         return new LoginResponse(tokenInfo.token(), tokenInfo.expiresIn());
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }

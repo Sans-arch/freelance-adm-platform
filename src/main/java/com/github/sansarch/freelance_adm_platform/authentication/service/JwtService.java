@@ -1,5 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.authentication.service;
 
+import com.github.sansarch.freelance_adm_platform.authentication.entity.User;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
@@ -16,15 +17,17 @@ public final class JwtService {
         this.jwtEncoder = jwtEncoder;
     }
 
-    public TokenInfo generateToken(String subject) {
+    public TokenInfo generateToken(User user) {
         var now = Instant.now();
         var expiresIn = 300L; // 5 minutes
+        var scope = user.getRole().name().toUpperCase();
 
         var claims = JwtClaimsSet.builder()
             .issuer("freelance-adm-platform")
-            .subject(subject)
+            .subject(user.getId().toString())
             .issuedAt(now)
             .expiresAt(now.plusSeconds(expiresIn))
+            .claim("scope", scope)
             .build();
 
         var jwt = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
