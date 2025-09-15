@@ -35,3 +35,4 @@ build/
 http_requests/
 
 .env
+/src/main/resources/app.key
