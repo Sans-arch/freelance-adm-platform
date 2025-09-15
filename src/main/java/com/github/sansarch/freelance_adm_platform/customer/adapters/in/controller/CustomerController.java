@@ -3,9 +3,9 @@ package com.github.sansarch.freelance_adm_platform.customer.adapters.in.controll
 import com.github.sansarch.freelance_adm_platform.customer.adapters.in.controller.dto.CreateCustomerRequestDto;
 import com.github.sansarch.freelance_adm_platform.customer.adapters.in.controller.dto.CreateCustomerResponseDto;
 import com.github.sansarch.freelance_adm_platform.customer.adapters.in.controller.openapi.CustomerControllerOpenApi;
-import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCaseInOut;
-import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCaseInOut.CreateCustomerCmd;
-import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCaseInOut.CreateCustomerCmd.CreateCustomerCmdDocument;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase.CreateCustomerCmd.CreateCustomerCmdDocument;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCaseInOut;
 import com.github.sansarch.freelance_adm_platform.customer.application.usecase.GetCustomerByIdUseCaseInOut.GetCustomerByIdCmd;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
@@ -18,10 +18,10 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/customers")
 public class CustomerController implements CustomerControllerOpenApi, DriverAdapter {
-    private final CreateCustomerUseCaseInOut createCustomerUseCase;
+    private final CreateCustomerUseCase createCustomerUseCase;
     private final GetCustomerByIdUseCaseInOut getCustomerByIdUseCase;
 
-    public CustomerController(CreateCustomerUseCaseInOut createCustomerUseCase,
+    public CustomerController(CreateCustomerUseCase createCustomerUseCase,
                               GetCustomerByIdUseCaseInOut getCustomerByIdUseCase) {
         this.createCustomerUseCase = createCustomerUseCase;
         this.getCustomerByIdUseCase = getCustomerByIdUseCase;

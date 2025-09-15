@@ -1,6 +1,6 @@
 package com.github.sansarch.freelance_adm_platform.customer.application.service;
 
-import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCaseInOut;
+import com.github.sansarch.freelance_adm_platform.customer.application.usecase.CreateCustomerUseCase;
 import com.github.sansarch.freelance_adm_platform.customer.domain.entity.Customer;
 import com.github.sansarch.freelance_adm_platform.customer.domain.exception.CustomerAlreadyExists;
 import com.github.sansarch.freelance_adm_platform.customer.domain.repository.CustomerRepository;
@@ -10,7 +10,7 @@ import com.github.sansarch.freelance_adm_platform.shared.domain.vo.Email;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateCustomerService implements CreateCustomerUseCaseInOut {
+public class CreateCustomerService implements CreateCustomerUseCase {
     private final CustomerRepository customerRepository;
 
     public CreateCustomerService(CustomerRepository customerRepository) {
