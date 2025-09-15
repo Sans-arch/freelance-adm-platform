@@ -3,7 +3,6 @@ package com.github.sansarch.freelance_adm_platform.authentication.service;
 import com.github.sansarch.freelance_adm_platform.authentication.controller.dto.LoginResponse;
 import com.github.sansarch.freelance_adm_platform.authentication.entity.Role;
 import com.github.sansarch.freelance_adm_platform.authentication.entity.User;
-import com.github.sansarch.freelance_adm_platform.authentication.repository.RoleRepository;
 import com.github.sansarch.freelance_adm_platform.authentication.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -16,13 +15,11 @@ import java.util.Set;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
     }
@@ -33,13 +30,10 @@ public class UserService {
             throw new IllegalArgumentException("Username is already taken!");
         }
 
-        var role = roleRepository.findByName(Role.Values.ROLE_USER.name())
-            .orElseThrow(() -> new IllegalArgumentException("Role is not found!"));
-
         var user = new User();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
-        user.setRoles(Set.of(role));
+        user.setRole(Role.ROLE_USER);
         userRepository.save(user);
     }
 

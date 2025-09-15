@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Set;
-
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
@@ -25,14 +23,7 @@ public class User {
     private String username;
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "user_roles",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles;
-
+    private Role role;
 
     public boolean isLoginCorrect(String passwordAttempt, PasswordEncoder passwordEncoder) {
         return passwordEncoder.matches(passwordAttempt, this.getPassword());

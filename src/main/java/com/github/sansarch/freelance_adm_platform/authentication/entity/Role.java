@@ -1,37 +1,16 @@
 package com.github.sansarch.freelance_adm_platform.authentication.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+public enum Role {
+    ROLE_USER(1),
+    ROLE_ADMIN(2);
 
-@Entity
-@Table(name = "roles")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Role {
+    private final int code;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Role(int code) {
+        this.code = code;
+    }
 
-    private String name;
-
-    public enum Values {
-        ROLE_USER(1L),
-        ROLE_ADMIN(2L);
-
-        final long roleId;
-
-        Values(long roleId) {
-            this.roleId = roleId;
-        }
-
-        public long getRoleId() {
-            return roleId;
-        }
+    public int getCode() {
+        return this.code;
     }
 }
