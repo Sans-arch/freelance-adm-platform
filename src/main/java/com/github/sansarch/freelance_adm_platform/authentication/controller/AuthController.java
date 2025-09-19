@@ -3,17 +3,17 @@ package com.github.sansarch.freelance_adm_platform.authentication.controller;
 import com.github.sansarch.freelance_adm_platform.authentication.controller.dto.LoginRequest;
 import com.github.sansarch.freelance_adm_platform.authentication.controller.dto.LoginResponse;
 import com.github.sansarch.freelance_adm_platform.authentication.controller.dto.RegisterRequest;
-import com.github.sansarch.freelance_adm_platform.authentication.entity.User;
+import com.github.sansarch.freelance_adm_platform.authentication.controller.openapi.AuthenticationControllerOpenApi;
 import com.github.sansarch.freelance_adm_platform.authentication.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth/v1")
-public class AuthController {
+public class AuthController implements AuthenticationControllerOpenApi {
 
     private final UserService userService;
 
@@ -22,21 +22,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<Void> register(@RequestBody RegisterRequest registerRequest) {
         userService.createUser(registerRequest.convertToCommand());
-        return ResponseEntity.ok("User registered successfully!");
+        return ResponseEntity.status(401).build();
     }
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         var loginResponse = userService.authenticate(loginRequest.username(), loginRequest.password());
         return ResponseEntity.ok(loginResponse);
-    }
-
-    @GetMapping("/users")
-    @PreAuthorize("hasAuthority('SCOPE_ROLE_ADMIN')")
-    public ResponseEntity<List<User>> listUsers() {
-        var users = userService.findAll();
-        return ResponseEntity.ok(users);
     }
 }
