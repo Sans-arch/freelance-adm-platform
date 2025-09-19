@@ -6,8 +6,7 @@ A plataforma permitirá que clientes cadastrem projetos e freelancers possam se 
 - Cadastro de Usuários:
     - Dois tipos de usuários: Cliente e Freelancer.
     - Dados obrigatórios: Nome Completo, CPF/CNPJ, E-mail (único) e Senha.
-    - Um usuário pode ser tanto cliente quanto freelancer, mas deve escolher um perfil principal.
-
+    - Um usuário pode ser cliente ou freelancer.
 
 - Cadastro de Projetos:
   - Somente clientes podem cadastrar projetos.
