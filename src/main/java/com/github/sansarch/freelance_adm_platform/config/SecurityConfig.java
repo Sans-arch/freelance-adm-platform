@@ -1,4 +1,4 @@
-package com.github.sansarch.freelance_adm_platform.authentication.config;
+package com.github.sansarch.freelance_adm_platform.config;
 
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
