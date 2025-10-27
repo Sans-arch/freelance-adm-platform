@@ -1,15 +1,4 @@
 services:
-    app:
-        image: freelance-adm-platform
-        ports:
-            - "8080:8080"  # Map port 8080 of the container to port 8080 on the host
-        environment:
-          DB_URL: jdbc:postgresql://postgres:5432/freelance_adm_db
-          DB_USER: admin
-          DB_PASS: admin
-        depends_on:
-            - rabbitmq
-            - postgres
     rabbitmq:
       image: rabbitmq:3-management
       ports:
@@ -28,7 +17,7 @@ services:
             POSTGRES_PASSWORD: admin
             POSTGRES_DB: freelance_adm_db
         volumes:
-          - pgdata:/var/lib/postgresql/data  # Persist PostgreSQL data
+          - pgdata:/var/lib/postgresql
 
 volumes:
   pgdata:
